@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EleccionActivity">
+
+    <TextView
+        android:id="@+id/txtVEnunciadoEleccion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="¿Cómo quieres las preguntas?"
+        android:textStyle="bold"
+        android:textSize="25dp"
+        android:textAlignment="center">
+    </TextView>
+
+    <RadioGroup
+        android:id="@+id/radiogroup2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:layout_marginStart="110dp">
+        <RadioButton
+            android:id="@+id/rbtnSegunPais"
+            android:text="SEGÚN PAÍS"
+            android:textSize="15dp"
+            android:onClick="obtenerContinente"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="5">
+        </RadioButton>
+        <RadioButton
+            android:id="@+id/rbtnSegunCapital"
+            android:text="SEGUN CAPITAL"
+            android:textSize="15dp"
+            android:onClick="obtenerContinente"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="5">
+        </RadioButton>
+    </RadioGroup>
+
+</LinearLayout>

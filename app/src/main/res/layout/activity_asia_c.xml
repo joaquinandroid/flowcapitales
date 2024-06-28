@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities_paises.AsiaC">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/txtVtxtVidas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="center"
+            android:text="VIDAS RESTANTES: "
+            android:textAlignment="center">
+        </TextView>
+
+        <TextView
+            android:id="@+id/txtvVidas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="center"
+            android:text="vidas"
+            android:textAlignment="center"
+            android:textSize="18dp"
+            android:textColor="@color/rojo">
+        </TextView>
+
+        <TextView
+            android:id="@+id/txtVTextPorcentaje"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="center"
+            android:text="numAciertos"
+            android:textSize="18dp"
+            android:textColor="@color/verde"
+            android:textAlignment="center">
+        </TextView>
+
+        <TextView
+            android:id="@+id/txtVPorcentaje"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="center"
+            android:text="% ACIERTOS"
+            android:textAlignment="center">
+        </TextView>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/txtVPreg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="10dp"
+        android:gravity="center"
+        android:text="pregunta"
+        android:textAlignment="center">
+    </TextView>
+
+    <RadioGroup
+        android:id="@+id/rdGroup"
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:layout_weight="6"
+        android:gravity="top"
+        >
+
+        <RadioButton
+            android:id="@+id/opcion1"
+            android:text="opcion1"
+            android:onClick="comprobarRespuesta1"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </RadioButton>
+        <RadioButton
+            android:id="@+id/opcion2"
+            android:text="opcion2"
+            android:onClick="comprobarRespuesta2"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </RadioButton>
+        <RadioButton
+            android:id="@+id/opcion3"
+            android:text="opcion3"
+            android:onClick="comprobarRespuesta3"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </RadioButton>
+        <TextView
+            android:id="@+id/txtVcontador"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="center"
+            android:text="contador"
+            android:textStyle="bold"
+            android:textAlignment="center"></TextView>
+
+    </RadioGroup>
+
+</LinearLayout>

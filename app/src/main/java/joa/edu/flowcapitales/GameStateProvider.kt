@@ -1,0 +1,230 @@
+package joa.edu.flowcapitales
+
+import kotlin.random.Random
+
+class GameStateProvider {
+    companion object{
+
+        const val TAMANOEUROPA = 44
+        var europaPaises: MutableList<String> = mutableListOf(
+            "RUSIA", "ALEMANIA", "REINO UNIDO", "FRANCIA", "ITALIA", "ESPAÑA", "UCRANIA",
+            "POLONIA", "RUMANIA", "PAÍSES BAJOS", "BELGICA", "REP. CHECA", "SUECIA", "GRECIA",
+            "PORTUGAL", "HUNGRÍA", "BIELORRUSIA", "AUSTRIA", "SUIZA", "SERBIA", "BULGARIA",
+            "DINAMARCA", "FINLANDIA", "NORUEGA", "ESLOVAQUIA", "IRLANDA", "CROACIA", "MOLDAVIA",
+            "BOSNIA", "ALBANIA", "LITUANIA", "MACEDONIA", "ESLOVENIA", "LETONIA", "ESTONIA",
+            "MONTENEGRO", "LUXEMBURGO", "MALTA", "ISLANDIA", "ANDORRA", "LIECHTENSTEIN", "MÓNACO",
+            "SAN MARINO", "CIUDAD DE VATICANO"
+        )
+
+        var europaCapitales: MutableList<String> = mutableListOf(
+            "MOSCÚ", "BERLÍN", "LONDRES", "PARÍS", "ROMA", "MADRID", "KIEV",
+            "VARSOVIA", "BUCAREST", "AMSTERDAM", "BRUSELAS", "PRAGA", "ESTOCOLMO", "ATENAS",
+            "LISBOA", "BUDAPEST", "MINSK", "VIENA", "BERNA", "BELGRADO", "SOFÍA",
+            "COPENHAGUE", "HELSINKI", "OSLO", "BRATISLAVA", "DUBLÍN", "ZAGREB", "CHISINAU",
+            "SARAJEVO", "TIRANA", "VILNIUS", "SKOPJE", "LIUBLIANA", "RIGA", "TALLIN",
+            "PODGORICA", "LUXEMBURGO", "LA VALLETA", "REIKIAVIK", "ANDORRA LA VELLA", "VADUZ", "MÓNACO",
+            "SAN MARINO", "CIUDAD DE VATICANO"
+        )
+
+        const val TAMANOAMERICA = 35
+        var americaPaises: MutableList<String> = mutableListOf(
+            "ANTIGUA Y BARBUDA", "BAHAMAS", "BARBADOS", "CUBA", "DOMINICA", "GRANADA", "GUYANA",
+            "HAITÍ", "JAMAICA", "REP.DOMINICANA", "SAN CRISTÓBAL Y NIEVES", "SAN VICENTE Y LAS GRANADINAS", "SANTA LUCÍA", "ARGENTINA",
+            "BOLIVIA", "BRASIL", "CHILE", "COLOMBIA", "ECUADOR", "PARAGUAY", "PERÚ",
+            "SURINAM", "TRINIDAD Y TOBAGO", "URUGUAY", "VENEZUELA", "BELICE", "COSTA RICA", "EL SALVADOR",
+            "GUATEMALA", "HONDURAS", "NICARAGUA", "PANAMA", "CANADA", "ESTADOS UNIDOS", "MÉXICO"
+        )
+        var americaCapitales: MutableList<String> = mutableListOf(
+            "SAINT JOHN", "NASAU", "BRIDGETOWN", "LA HABANA", "ROSEAU", "SAINT GEORGE", "GEORGETOWN",
+            "PUERTO PRÍNCIPE", "KINGSTON", "SANTO DOMINGO", "BASSETERRE", "KINGSTOWN", "CASTRIES", "BUENOS AIRES",
+            "SUCRE", "BRASILIA", "SANTIAGO DE CHILE", "BOGOTÁ", "QUITO", "ASUNCIÓN", "LIMA",
+            "PARAMARIBO", "PUERTO ESPAÑA", "MONTEVIDEO", "CARACAS", "BELMOPAN", "SAN JOSÉ", "SAN SALVADOR",
+            "CIUDAD DE GUATEMALA", "TEGUCIGALPA", "MANAGUA", "PANAMA", "OTAWA", "WASHINGTON", "MÉXICO DF"
+        )
+
+        const val TAMANOASIA = 48
+        var asiaPaises: MutableList<String> = mutableListOf(
+            "AFGANISTAN", "ARABIA SAUDÍ", "ARMENIA", "AZERBAIYAN", "BANGLADESH", "BAHREIN", "BIRMANIA",
+            "BRUNEI", "BUTÁN", "CAMBOYA", "QATAR", "CHINA", "COREA DEL NORTE", "COREA DEL SUR",
+            "EMIRATOS ÁRABES", "FILIPINAS", "GEORGIA", "INDIA", "INDONESIA", "IRAK", "IRÁN",
+            "ISRAEL", "JAPÓN", "JORDANIA", "KAZAJISTÁN", "KIRGUISTÁN", "KUWAIT", "LAOS",
+            "LÍBANO", "MALASIA", "MALDIVAS", "MONGOLIA", "NEPAL", "OMÁN", "PAKISTÁN", "RUSIA",
+            "SINGAPUR", "SIRIA", "SRI LANKA", "TAILANDIA", "TAIWAN", "TAYIKISTÁN", "TIMOR ORIENTAL",
+            "TURQUÍA", "TURKMENISTÁN", "UZBEKISTÁN", "VIETNAM", "YEMEN"
+        )
+        var asiaCapitales: MutableList<String> = mutableListOf(
+            "KABUL", "RIAD", "EREVAN", "BAKÚ", "DACA", "MANAMA", "NAIPYIDÓ",
+            "BANDAR SERI BEGAWAN", "TIMBU", "NOM PEN", "DOHA", "PEKÍN", "PIONYANG", "SEÚL",
+            "ABU DABI", "MANILA", "TIFLIS", "NUEVA DELHI", "YAKARTA", "BAGDAD", "TEHERÁN",
+            "JERUSALÉN", "TOKIA", "AMÁN", "ASTANÁ", "BISKEK", "KUWAIT", "VIENTIÁN",
+            "BEIRUT", "KUALA LUMPUR", "MALÉ", "ULAN BATOR", "KATMANDÚ", "MASCATÉ", "ISLAMABAD", "MOSCÚ",
+            "SINGAPUR", "DAMASCO", "SRI JAYAWARDENAPURA KOTTE", "BANGKOK", "TAIPEI", "DUSAMBÉ", "DILI",
+            "ANKARA", "ASJABAD", "TASKENT", "HANOI", "SANÁ"
+        )
+
+        const val TAMANOAFRICA = 54
+        var africaPaises: MutableList<String> = mutableListOf(
+            "ANGOLA", "ARGELIA", "BENÍN", "BOTSUANA", "BURKINA FASO", "BURUNDI", "CABO VERDE",
+            "CAMERÚN", "REP.CENTROAFRICANA", "COMORES", "COSTA DE MARFIL", "CHAD", "EGIPTO", "ERITREA",
+            "ETIOPÍA", "GABÓN", "GAMBIA", "GHANA", "GUINEA CONAKRY", "GUINEA BISSAU", "GUINEA ECUATORIAL",
+            "KENIA", "LESOTO", "LIBERIA", "LIBIA", "MADAGASCAR", "MALAWI", "MALÍ",
+            "MARRUECOS", "MAURICIO", "MAURITANIA", "MOZAMBIQUE", "NAMIBIA", "NÍGER", "NIGERIA",
+            "RUANDA", "REP.CONGO", "REP.DEMOCRÁTICA CONGO", "SANTO TOMÉ Y PRÍNCIPE", "SENEGAL", "SEYCHELLES", "SIERRA LEONA",
+            "SOMALIA", "SUDÁFRICA", "SUDÁN", "SUDÁN DEL SUR", "SUAZILANDIA", "TANZANIA", "TÚNEZ",
+            "TOGO", "UGANDA", "YIBUTI", "ZAMBIA", "ZIMBABUE"
+        )
+        var africaCapitales: MutableList<String> = mutableListOf(
+            "LUANDA", "ARGEL", "PORTO NOVO", "GABORONE", "UAGADUGÚ", "BUYUMBURA", "PRAIA",
+            "YAUNDÉ", "BANGUI", "MORONI", "YAMUSUKRO", "YAMENA", "EL CAIRO", "ASMARA",
+            "ADDIS ABEBA", "LIBRE VILLE", "BANJUL", "ACCRA", "CONAKRY", "BISSAU", "MALABO",
+            "NAIROBI", "MASERU", "MONROVIA", "TRIPOLI", "ANTANANARIVO", "LILONGUE", "BAMAKO",
+            "RABAT", "PORT LOUIS", "NUAKCHOT", "MAPUTO", "WINDHOEK", "NIAMEY", "ABUYA",
+            "KIGALI", "BRAZZAVILLE", "KINGSHASA", "SANTO TOMÉ", "DAKAR", "VICTORIA", "FREETOWN",
+            "MOGADISCIO", "PRETORIA", "JARTUM", "YUBA", "LOBAMBA", "DAR EL SALAM", "TÚNEZ",
+            "TOMÉ", "KAMPALA", "YIBUTI", "LUSAKA", "HARE"
+        )
+
+        const val TAMANOOCEANIA = 14
+        var oceaniaPaises: MutableList<String> = mutableListOf(
+            "AUSTRALIA", "NUEVA ZELANDA", "PAPÚA NUEVA GUINEA", "FIYI", "ISLAS MARSHALL", "ISLAS SALOMÓN", "KIRIBATI",
+            "TONGA", "SAMOA", "TUVALU", "VANUATU", "MICRONESIA", "NAURU", "PALAOS"
+        )
+        var oceaniaCapitales: MutableList<String> = mutableListOf(
+            "CAMBERRA", "WELLINGTON", "PORT MORESBY", "SUVA", "MAJURO", "HONIARA", "TARAWA SUR",
+            "NUKUALOFA", "APIA", "FUNAFUTI", "PORT VILA", "PALIKIR", "YAREN", "NGERULMUD"
+        )
+
+        const val TAMANOTODOS = 195
+        var todosPaises: MutableList<String> = mutableListOf(
+            "RUSIA", "ALEMANIA", "REINO UNIDO", "FRANCIA", "ITALIA", "ESPAÑA", "UCRANIA",
+            "POLONIA", "RUMANIA", "PAÍSES BAJOS", "BELGICA", "REP. CHECA", "SUECIA", "GRECIA",
+            "PORTUGAL", "HUNGRÍA", "BIELORRUSIA", "AUSTRIA", "SUIZA", "SERBIA", "BULGARIA",
+            "DINAMARCA", "FINLANDIA", "NORUEGA", "ESLOVAQUIA", "IRLANDA", "CROACIA", "MOLDAVIA",
+            "BOSNIA", "ALBANIA", "LITUANIA", "MACEDONIA", "ESLOVENIA", "LETONIA", "ESTONIA",
+            "MONTENEGRO", "LUXEMBURGO", "MALTA", "ISLANDIA", "ANDORRA", "LIECHTENSTEIN", "MÓNACO",
+            "SAN MARINO", "CIUDAD DE VATICANO",
+            "ANTIGUA Y BARBUDA", "BAHAMAS", "BARBADOS", "CUBA", "DOMINICA", "GRANADA", "GUYANA",
+            "HAITÍ", "JAMAICA", "REP.DOMINICANA", "SAN CRISTÓBAL Y NIEVES", "SAN VICENTE Y LAS GRANADINAS", "SANTA LUCÍA", "ARGENTINA",
+            "BOLIVIA", "BRASIL", "CHILE", "COLOMBIA", "ECUADOR", "PARAGUAY", "PERÚ",
+            "SURINAM", "TRINIDAD Y TOBAGO", "URUGUAY", "VENEZUELA", "BELICE", "COSTA RICA", "EL SALVADOR",
+            "GUATEMALA", "HONDURAS", "NICARAGUA", "PANAMA", "CANADA", "ESTADOS UNIDOS", "MÉXICO",
+            "AFGANISTAN", "ARABIA SAUDÍ", "ARMENIA", "AZERBAIYAN", "BANGLADESH", "BAHREIN", "BIRMANIA",
+            "BRUNEI", "BUTÁN", "CAMBOYA", "QATAR", "CHINA", "COREA DEL NORTE", "COREA DEL SUR",
+            "EMIRATOS ÁRABES", "FILIPINAS", "GEORGIA", "INDIA", "INDONESIA", "IRAK", "IRÁN",
+            "ISRAEL", "JAPÓN", "JORDANIA", "KAZAJISTÁN", "KIRGUISTÁN", "KUWAIT", "LAOS",
+            "LÍBANO", "MALASIA", "MALDIVAS", "MONGOLIA", "NEPAL", "OMÁN", "PAKISTÁN", "RUSIA",
+            "SINGAPUR", "SIRIA", "SRI LANKA", "TAILANDIA", "TAIWAN", "TAYIKISTÁN", "TIMOR ORIENTAL",
+            "TURQUÍA", "TURKMENISTÁN", "UZBEKISTÁN", "VIETNAM", "YEMEN",
+            "ANGOLA", "ARGELIA", "BENÍN", "BOTSUANA", "BURKINA FASO", "BURUNDI", "CABO VERDE",
+            "CAMERÚN", "REP.CENTROAFRICANA", "COMORES", "COSTA DE MARFIL", "CHAD", "EGIPTO", "ERITREA",
+            "ETIOPÍA", "GABÓN", "GAMBIA", "GHANA", "GUINEA CONAKRY", "GUINEA BISSAU", "GUINEA ECUATORIAL",
+            "KENIA", "LESOTO", "LIBERIA", "LIBIA", "MADAGASCAR", "MALAWI", "MALÍ",
+            "MARRUECOS", "MAURICIO", "MAURITANIA", "MOZAMBIQUE", "NAMIBIA", "NÍGER", "NIGERIA",
+            "RUANDA", "REP.CONGO", "REP.DEMOCRÁTICA CONGO", "SANTO TOMÉ Y PRÍNCIPE", "SENEGAL", "SEYCHELLES", "SIERRA LEONA",
+            "SOMALIA", "SUDÁFRICA", "SUDÁN", "SUDÁN DEL SUR", "SUAZILANDIA", "TANZANIA", "TÚNEZ",
+            "TOGO", "UGANDA", "YIBUTI", "ZAMBIA", "ZIMBABUE",
+            "AUSTRALIA", "NUEVA ZELANDA", "PAPÚA NUEVA GUINEA", "FIYI", "ISLAS MARSHALL", "ISLAS SALOMÓN", "KIRIBATI",
+            "TONGA", "SAMOA", "TUVALU", "VANUATU", "MICRONESIA", "NAURU", "PALAOS"
+        )
+        var todosCapitales: MutableList<String> = mutableListOf(
+            "MOSCÚ", "BERLÍN", "LONDRES", "PARÍS", "ROMA", "MADRID", "KIEV",
+            "VARSOVIA", "BUCAREST", "AMSTERDAM", "BRUSELAS", "PRAGA", "ESTOCOLMO", "ATENAS",
+            "LISBOA", "BUDAPEST", "MINSK", "VIENA", "BERNA", "BELGRADO", "SOFÍA",
+            "COPENHAGUE", "HELSINKI", "OSLO", "BRATISLAVA", "DUBLÍN", "ZAGREB", "CHISINAU",
+            "SARAJEVO", "TIRANA", "VILNIUS", "SKOPJE", "LIUBLIANA", "RIGA", "TALLIN",
+            "PODGORICA", "LUXEMBURGO", "LA VALLETA", "REIKIAVIK", "ANDORRA LA VELLA", "VADUZ", "MÓNACO",
+            "SAN MARINO", "CIUDAD DE VATICANO",
+            "SAINT JOHN", "NASAU", "BRIDGETOWN", "LA HABANA", "ROSEAU", "SAINT GEORGE", "GEORGETOWN",
+            "PUERTO PRÍNCIPE", "KINGSTON", "SANTO DOMINGO", "BASSETERRE", "KINGSTOWN", "CASTRIES", "BUENOS AIRES",
+            "SUCRE", "BRASILIA", "SANTIAGO DE CHILE", "BOGOTÁ", "QUITO", "ASUNCIÓN", "LIMA",
+            "PARAMARIBO", "PUERTO ESPAÑA", "MONTEVIDEO", "CARACAS", "BELMOPAN", "SAN JOSÉ", "SAN SALVADOR",
+            "CIUDAD DE GUATEMALA", "TEGUCIGALPA", "MANAGUA", "PANAMA", "OTAWA", "WASHINGTON", "MÉXICO DF",
+            "KABUL", "RIAD", "EREVAN", "BAKÚ", "DACA", "MANAMA", "NAIPYIDÓ",
+            "BANDAR SERI BEGAWAN", "TIMBU", "NOM PEN", "DOHA", "PEKÍN", "PIONYANG", "SEÚL",
+            "ABU DABI", "MANILA", "TIFLIS", "NUEVA DELHI", "YAKARTA", "BAGDAD", "TEHERÁN",
+            "JERUSALÉN", "TOKIA", "AMÁN", "ASTANÁ", "BISKEK", "KUWAIT", "VIENTIÁN",
+            "BEIRUT", "KUALA LUMPUR", "MALÉ", "ULAN BATOR", "KATMANDÚ", "MASCATÉ", "ISLAMABAD", "MOSCÚ",
+            "SINGAPUR", "DAMASCO", "SRI JAYAWARDENAPURA KOTTE", "BANGKOK", "TAIPEI", "DUSAMBÉ", "DILI",
+            "ANKARA", "ASJABAD", "TASKENT", "HANOI", "SANÁ",
+            "LUANDA", "ARGEL", "PORTO NOVO", "GABORONE", "UAGADUGÚ", "BUYUMBURA", "PRAIA",
+            "YAUNDÉ", "BANGUI", "MORONI", "YAMUSUKRO", "YAMENA", "EL CAIRO", "ASMARA",
+            "ADDIS ABEBA", "LIBRE VILLE", "BANJUL", "ACCRA", "CONAKRY", "BISSAU", "MALABO",
+            "NAIROBI", "MASERU", "MONROVIA", "TRIPOLI", "ANTANANARIVO", "LILONGUE", "BAMAKO",
+            "RABAT", "PORT LOUIS", "NUAKCHOT", "MAPUTO", "WINDHOEK", "NIAMEY", "ABUYA",
+            "KIGALI", "BRAZZAVILLE", "KINGSHASA", "SANTO TOMÉ", "DAKAR", "VICTORIA", "FREETOWN",
+            "MOGADISCIO", "PRETORIA", "JARTUM", "YUBA", "LOBAMBA", "DAR EL SALAM", "TÚNEZ",
+            "TOMÉ", "KAMPALA", "YIBUTI", "LUSAKA", "HARE",
+            "CAMBERRA", "WELLINGTON", "PORT MORESBY", "SUVA", "MAJURO", "HONIARA", "TARAWA SUR",
+            "NUKUALOFA", "APIA", "FUNAFUTI", "PORT VILA", "PALIKIR", "YAREN", "NGERULMUD"
+        )
+        var todosCapitalesReferencia: MutableList<String> = mutableListOf(
+            "MOSCÚ", "BERLÍN", "LONDRES", "PARÍS", "ROMA", "MADRID", "KIEV",
+            "VARSOVIA", "BUCAREST", "AMSTERDAM", "BRUSELAS", "PRAGA", "ESTOCOLMO", "ATENAS",
+            "LISBOA", "BUDAPEST", "MINSK", "VIENA", "BERNA", "BELGRADO", "SOFÍA",
+            "COPENHAGUE", "HELSINKI", "OSLO", "BRATISLAVA", "DUBLÍN", "ZAGREB", "CHISINAU",
+            "SARAJEVO", "TIRANA", "VILNIUS", "SKOPJE", "LIUBLIANA", "RIGA", "TALLIN",
+            "PODGORICA", "LUXEMBURGO", "LA VALLETA", "REIKIAVIK", "ANDORRA LA VELLA", "VADUZ", "MÓNACO",
+            "SAN MARINO", "CIUDAD DE VATICANO",
+            "SAINT JOHN", "NASAU", "BRIDGETOWN", "LA HABANA", "ROSEAU", "SAINT GEORGE", "GEORGETOWN",
+            "PUERTO PRÍNCIPE", "KINGSTON", "SANTO DOMINGO", "BASSETERRE", "KINGSTOWN", "CASTRIES", "BUENOS AIRES",
+            "SUCRE", "BRASILIA", "SANTIAGO DE CHILE", "BOGOTÁ", "QUITO", "ASUNCIÓN", "LIMA",
+            "PARAMARIBO", "PUERTO ESPAÑA", "MONTEVIDEO", "CARACAS", "BELMOPAN", "SAN JOSÉ", "SAN SALVADOR",
+            "CIUDAD DE GUATEMALA", "TEGUCIGALPA", "MANAGUA", "PANAMA", "OTAWA", "WASHINGTON", "MÉXICO DF",
+            "KABUL", "RIAD", "EREVAN", "BAKÚ", "DACA", "MANAMA", "NAIPYIDÓ",
+            "BANDAR SERI BEGAWAN", "TIMBU", "NOM PEN", "DOHA", "PEKÍN", "PIONYANG", "SEÚL",
+            "ABU DABI", "MANILA", "TIFLIS", "NUEVA DELHI", "YAKARTA", "BAGDAD", "TEHERÁN",
+            "JERUSALÉN", "TOKIA", "AMÁN", "ASTANÁ", "BISKEK", "KUWAIT", "VIENTIÁN",
+            "BEIRUT", "KUALA LUMPUR", "MALÉ", "ULAN BATOR", "KATMANDÚ", "MASCATÉ", "ISLAMABAD", "MOSCÚ",
+            "SINGAPUR", "DAMASCO", "SRI JAYAWARDENAPURA KOTTE", "BANGKOK", "TAIPEI", "DUSAMBÉ", "DILI",
+            "ANKARA", "ASJABAD", "TASKENT", "HANOI", "SANÁ",
+            "LUANDA", "ARGEL", "PORTO NOVO", "GABORONE", "UAGADUGÚ", "BUYUMBURA", "PRAIA",
+            "YAUNDÉ", "BANGUI", "MORONI", "YAMUSUKRO", "YAMENA", "EL CAIRO", "ASMARA",
+            "ADDIS ABEBA", "LIBRE VILLE", "BANJUL", "ACCRA", "CONAKRY", "BISSAU", "MALABO",
+            "NAIROBI", "MASERU", "MONROVIA", "TRIPOLI", "ANTANANARIVO", "LILONGUE", "BAMAKO",
+            "RABAT", "PORT LOUIS", "NUAKCHOT", "MAPUTO", "WINDHOEK", "NIAMEY", "ABUYA",
+            "KIGALI", "BRAZZAVILLE", "KINGSHASA", "SANTO TOMÉ", "DAKAR", "VICTORIA", "FREETOWN",
+            "MOGADISCIO", "PRETORIA", "JARTUM", "YUBA", "LOBAMBA", "DAR EL SALAM", "TÚNEZ",
+            "TOMÉ", "KAMPALA", "YIBUTI", "LUSAKA", "HARE",
+            "CAMBERRA", "WELLINGTON", "PORT MORESBY", "SUVA", "MAJURO", "HONIARA", "TARAWA SUR",
+            "NUKUALOFA", "APIA", "FUNAFUTI", "PORT VILA", "PALIKIR", "YAREN", "NGERULMUD",
+            "aquí mejor no selecciones *bonus","aquí mejor no selecciones *bonus",
+            "aquí mejor no selecciones *bonus","aquí mejor no selecciones *bonus",
+            "aquí mejor no selecciones *bonus","aquí mejor no selecciones *bonus"
+        )
+        var todosPaisesReferencia: MutableList<String> = mutableListOf(
+            "RUSIA", "ALEMANIA", "REINO UNIDO", "FRANCIA", "ITALIA", "ESPAÑA", "UCRANIA",
+            "POLONIA", "RUMANIA", "PAÍSES BAJOS", "BELGICA", "REP. CHECA", "SUECIA", "GRECIA",
+            "PORTUGAL", "HUNGRÍA", "BIELORRUSIA", "AUSTRIA", "SUIZA", "SERBIA", "BULGARIA",
+            "DINAMARCA", "FINLANDIA", "NORUEGA", "ESLOVAQUIA", "IRLANDA", "CROACIA", "MOLDAVIA",
+            "BOSNIA", "ALBANIA", "LITUANIA", "MACEDONIA", "ESLOVENIA", "LETONIA", "ESTONIA",
+            "MONTENEGRO", "LUXEMBURGO", "MALTA", "ISLANDIA", "ANDORRA", "LIECHTENSTEIN", "MÓNACO",
+            "SAN MARINO", "CIUDAD DE VATICANO",
+            "ANTIGUA Y BARBUDA", "BAHAMAS", "BARBADOS", "CUBA", "DOMINICA", "GRANADA", "GUYANA",
+            "HAITÍ", "JAMAICA", "REP.DOMINICANA", "SAN CRISTÓBAL Y NIEVES", "SAN VICENTE Y LAS GRANADINAS", "SANTA LUCÍA", "ARGENTINA",
+            "BOLIVIA", "BRASIL", "CHILE", "COLOMBIA", "ECUADOR", "PARAGUAY", "PERÚ",
+            "SURINAM", "TRINIDAD Y TOBAGO", "URUGUAY", "VENEZUELA", "BELICE", "COSTA RICA", "EL SALVADOR",
+            "GUATEMALA", "HONDURAS", "NICARAGUA", "PANAMA", "CANADA", "ESTADOS UNIDOS", "MÉXICO",
+            "AFGANISTAN", "ARABIA SAUDÍ", "ARMENIA", "AZERBAIYAN", "BANGLADESH", "BAHREIN", "BIRMANIA",
+            "BRUNEI", "BUTÁN", "CAMBOYA", "QATAR", "CHINA", "COREA DEL NORTE", "COREA DEL SUR",
+            "EMIRATOS ÁRABES", "FILIPINAS", "GEORGIA", "INDIA", "INDONESIA", "IRAK", "IRÁN",
+            "ISRAEL", "JAPÓN", "JORDANIA", "KAZAJISTÁN", "KIRGUISTÁN", "KUWAIT", "LAOS",
+            "LÍBANO", "MALASIA", "MALDIVAS", "MONGOLIA", "NEPAL", "OMÁN", "PAKISTÁN", "RUSIA",
+            "SINGAPUR", "SIRIA", "SRI LANKA", "TAILANDIA", "TAIWAN", "TAYIKISTÁN", "TIMOR ORIENTAL",
+            "TURQUÍA", "TURKMENISTÁN", "UZBEKISTÁN", "VIETNAM", "YEMEN",
+            "ANGOLA", "ARGELIA", "BENÍN", "BOTSUANA", "BURKINA FASO", "BURUNDI", "CABO VERDE",
+            "CAMERÚN", "REP.CENTROAFRICANA", "COMORES", "COSTA DE MARFIL", "CHAD", "EGIPTO", "ERITREA",
+            "ETIOPÍA", "GABÓN", "GAMBIA", "GHANA", "GUINEA CONAKRY", "GUINEA BISSAU", "GUINEA ECUATORIAL",
+            "KENIA", "LESOTO", "LIBERIA", "LIBIA", "MADAGASCAR", "MALAWI", "MALÍ",
+            "MARRUECOS", "MAURICIO", "MAURITANIA", "MOZAMBIQUE", "NAMIBIA", "NÍGER", "NIGERIA",
+            "RUANDA", "REP.CONGO", "REP.DEMOCRÁTICA CONGO", "SANTO TOMÉ Y PRÍNCIPE", "SENEGAL", "SEYCHELLES", "SIERRA LEONA",
+            "SOMALIA", "SUDÁFRICA", "SUDÁN", "SUDÁN DEL SUR", "SUAZILANDIA", "TANZANIA", "TÚNEZ",
+            "TOGO", "UGANDA", "YIBUTI", "ZAMBIA", "ZIMBABUE",
+            "AUSTRALIA", "NUEVA ZELANDA", "PAPÚA NUEVA GUINEA", "FIYI", "ISLAS MARSHALL", "ISLAS SALOMÓN", "KIRIBATI",
+            "TONGA", "SAMOA", "TUVALU", "VANUATU", "MICRONESIA", "NAURU", "PALAOS",
+            "aquí mejor no selecciones *bonus","aquí mejor no selecciones *bonus",
+            "aquí mejor no selecciones *bonus","aquí mejor no selecciones *bonus",
+            "aquí mejor no selecciones *bonus","aquí mejor no selecciones *bonus"
+        )
+
+    }
+}

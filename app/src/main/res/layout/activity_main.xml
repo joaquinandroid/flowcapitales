@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+    
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+
+    <TextView
+        android:id="@+id/textoEscoge"
+        android:textStyle="bold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:gravity="center"
+        android:text="ESCOGE"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"></TextView>
+
+    <RadioGroup
+        android:id="@+id/radiogroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textoEscoge">
+
+        <RadioButton
+            android:id="@+id/rbtnEuropa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="3.33"
+            android:onClick="obtenerSeleccion"
+            android:text="EUROPA"></RadioButton>
+
+        <RadioButton
+            android:id="@+id/rbtnAmerica"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="3.33"
+            android:onClick="obtenerSeleccion"
+            android:text="AMÉRICA"></RadioButton>
+
+        <RadioButton
+            android:id="@+id/rbtnAsia"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="3.33"
+            android:onClick="obtenerSeleccion"
+            android:text="ASIA"></RadioButton>
+
+        <RadioButton
+            android:id="@+id/rbtnAfrica"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="3.33"
+            android:onClick="obtenerSeleccion"
+            android:text="ÁFRICA"></RadioButton>
+
+        <RadioButton
+            android:id="@+id/rbtnOceania"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="3.33"
+            android:onClick="obtenerSeleccion"
+            android:text="OCEANÍA"></RadioButton>
+
+        <RadioButton
+            android:id="@+id/rbtnTodos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="3.33"
+            android:onClick="obtenerSeleccion"
+            android:text="TODOS"></RadioButton>
+
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/btnCerrarApp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="50dp"
+        android:onClick="cerrarApp"
+        android:text="Cerrar App"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radiogroup"></Button>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
